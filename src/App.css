@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+.hidden {
+  background-color: aquamarine;
+}
+.shown {
+  background-color: pink;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}

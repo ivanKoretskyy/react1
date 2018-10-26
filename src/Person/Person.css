@@ -1,0 +1,20 @@
+.Person {
+  border: 1px solid gray;
+  box-shadow: 0 2px 2px #89aabb;
+  margin: 16px auto;
+  padding: 20px;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+.person-action {
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+}
+
+.Person-vip {
+  font-size: 18px;
+  color: gold;
+  background-color: #332277;
+}
