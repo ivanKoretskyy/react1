@@ -1,11 +1,19 @@
 .Person {
   border: 1px solid gray;
-  box-shadow: 0 2px 2px #89aabb;
+
   margin: 16px auto;
   padding: 20px;
   width: 300px;
   display: flex;
   justify-content: space-between;
+}
+@media (max-width: 700px) {
+  .Person {
+    width: 100%;
+  }
+}
+.Person:hover {
+  box-shadow: 0 2px 2px #89aabb;
 }
 .person-action {
   font-weight: bold;

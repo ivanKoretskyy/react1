@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Person from "./Person/Person";
-import Radium, { StyleRoot } from "radium";
-import "./App.css";
+import classes from "./App.module.css";
 
 class App extends Component {
   state = {
@@ -42,14 +41,12 @@ class App extends Component {
       cursor: "pointer",
       borderRadius: "3px",
       backgroundColor: "#55cc22",
-      color: "#ffffff",
-      ":hover": { backgroundColor: "#22ff55" }
+      color: "#ffffff"
     };
     let persons = null;
-    let classes = "hidden";
     if (this.state.showPersons) {
       persons = (
-        <div class="flex">
+        <div className={classes.flex}>
           {this.state.persons.map((e, i) => (
             <Person
               key={e.id}
@@ -63,20 +60,17 @@ class App extends Component {
         </div>
       );
       buttonStyle.backgroundColor = "#bb6699";
-      buttonStyle[":hover"] = { backgroundColor: "#ff3344" };
     }
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>Group</h1>
-          <button style={buttonStyle} onClick={this.showPersonsTogler}>
-            Toggle Person
-          </button>
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className={classes.App}>
+        <h1>Group</h1>
+        <button style={buttonStyle} onClick={this.showPersonsTogler}>
+          Toggle Person
+        </button>
+        {persons}
+      </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
