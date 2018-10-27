@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Person from "../components/Person/Person";
+import Persons from "../components/Persons/Persons";
 import classes from "./App.module.css";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
   state = {
@@ -18,8 +20,9 @@ class App extends Component {
     this.setState({ persons });
   };
   showPersonsTogler = () => {
-    const showPersons = !this.state.showPersons;
-    this.setState({ showPersons });
+    this.setState(prevState => ({
+      showPersons: !prevState.showPersons
+    }));
   };
 
   changeNameHandler = (event, index) => {
@@ -33,40 +36,25 @@ class App extends Component {
     this.setState({ persons });
   };
   render() {
-    const buttonStyle = {
-      font: "inherit",
-      fontWeight: "bold",
-      border: "2px solid #ff98cc",
-      padding: "10px",
-      cursor: "pointer",
-      borderRadius: "3px",
-      backgroundColor: "#55cc22",
-      color: "#ffffff"
-    };
     let persons = null;
     if (this.state.showPersons) {
       persons = (
         <div className={classes.flex}>
-          {this.state.persons.map((e, i) => (
-            <Person
-              key={e.id}
-              name={e.name}
-              age={e.age}
-              vip={e.isVip}
-              changeName={event => this.changeNameHandler(event, i)}
-              remove={() => this.removeHandler(i)}
-            />
-          ))}
+          <Persons
+            persons={this.state.persons}
+            changeName={this.changeNameHandler}
+            remove={this.removeHandler}
+          />
         </div>
       );
-      buttonStyle.backgroundColor = "#bb6699";
     }
     return (
       <div className={classes.App}>
-        <h1>Group</h1>
-        <button style={buttonStyle} onClick={this.showPersonsTogler}>
-          Toggle Person
-        </button>
+        <Cockpit
+          clicked={this.showPersonsTogler}
+          showPersons={this.state.showPersons}
+        />
+
         {persons}
       </div>
     );
